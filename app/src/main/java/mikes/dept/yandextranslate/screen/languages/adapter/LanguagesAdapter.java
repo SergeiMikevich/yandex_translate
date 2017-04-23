@@ -20,10 +20,10 @@ public class LanguagesAdapter
         extends RecyclerView.Adapter<LanguagesHolder>
         implements View.OnClickListener {
 
-    private final LanguagesOnItemClickListener mOnItemClickListener;
+    private final OnItemClickListenerLanguage mOnItemClickListener;
     private final List<Language> mLanguages;
 
-    public LanguagesAdapter(@NonNull LanguagesOnItemClickListener onItemClickListener){
+    public LanguagesAdapter(@NonNull OnItemClickListenerLanguage onItemClickListener){
         mOnItemClickListener = onItemClickListener;
         mLanguages = new ArrayList<>();
     }

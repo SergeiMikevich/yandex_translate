@@ -12,11 +12,17 @@ public interface TranslateContract {
 
         void init();
 
+        void navigateLanguages();
+
     }
 
     interface Presenter extends BaseFragmentContract.Presenter {
 
+        void onClickLanguagesSource();
 
+        void onClickLanguageTarget();
+
+        void onClickReplaceLanguages();
 
     }
 

@@ -19,4 +19,18 @@ public class TranslatePresenter implements TranslateContract.Presenter {
         mView.init();
     }
 
+    @Override
+    public void onClickLanguagesSource() {
+        mView.navigateLanguages();
+    }
+
+    @Override
+    public void onClickLanguageTarget() {
+        mView.navigateLanguages();
+    }
+
+    @Override
+    public void onClickReplaceLanguages() {
+        mView.navigateLanguages();
+    }
 }

@@ -17,7 +17,7 @@ import mikes.dept.yandextranslate.R;
 import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.screen.base.BaseActivity;
 import mikes.dept.yandextranslate.screen.languages.adapter.LanguagesAdapter;
-import mikes.dept.yandextranslate.screen.languages.adapter.LanguagesOnItemClickListener;
+import mikes.dept.yandextranslate.screen.languages.adapter.OnItemClickListenerLanguage;
 import mikes.dept.yandextranslate.widget.divider.DividerItemDecoration;
 import mikes.dept.yandextranslate.widget.loading.LoadingDialog;
 import mikes.dept.yandextranslate.widget.loading.LoadingView;
@@ -28,7 +28,7 @@ import mikes.dept.yandextranslate.widget.loading.LoadingView;
 
 public class LanguagesActivity
         extends BaseActivity<LanguagesContract.Presenter>
-        implements LanguagesContract.View, LanguagesOnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
+        implements LanguagesContract.View, OnItemClickListenerLanguage, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
