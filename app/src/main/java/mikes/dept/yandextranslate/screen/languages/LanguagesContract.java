@@ -1,5 +1,10 @@
 package mikes.dept.yandextranslate.screen.languages;
 
+import android.support.annotation.NonNull;
+
+import java.util.List;
+
+import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.screen.base.BaseActivityContract;
 
 /**
@@ -12,9 +17,13 @@ public interface LanguagesContract {
 
         void init();
 
+        void showLanguages(List<Language> languages);
+
     }
 
     interface Presenter extends BaseActivityContract.Presenter {
+
+        void loadLanguages(@NonNull String ui);
 
     }
 

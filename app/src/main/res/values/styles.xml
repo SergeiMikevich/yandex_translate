@@ -11,6 +11,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="SelectableItemBackground">
+        <item name="android:theme">@style/SelectableItemTheme</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="SelectableItemTheme">
+        <item name="colorControlHighlight">@color/backgroundItemSelect</item>
+    </style>
+
     <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
