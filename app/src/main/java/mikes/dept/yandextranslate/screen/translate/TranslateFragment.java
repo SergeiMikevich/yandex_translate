@@ -2,6 +2,8 @@ package mikes.dept.yandextranslate.screen.translate;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +25,9 @@ public class TranslateFragment
         extends BaseFragment<TranslateContract.Presenter>
         implements TranslateContract.View, OnItemClickListenerLanguageSelector {
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
     @BindView(R.id.language_selector_view)
     LanguageSelectorView mLanguageSelectorView;
 
@@ -43,6 +48,7 @@ public class TranslateFragment
         ButterKnife.bind(this, mView);
         mLoadingView = LoadingDialog.view(getChildFragmentManager());
         mLanguageSelectorView.setOnClickListener(this);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
     }
 
     @Override
