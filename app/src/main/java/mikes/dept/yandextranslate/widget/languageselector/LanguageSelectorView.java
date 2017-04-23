@@ -45,11 +45,11 @@ public class LanguageSelectorView extends LinearLayoutCompat {
         ButterKnife.bind(this);
     }
 
-    public void setupLanguageSource(@NonNull Language language) {
+    public void setupLanguageSource(Language language) {
         mLanguageSelectorSourceItemView.setupLanguage(language);
     }
 
-    public void setupLanguageTarget(@NonNull Language language) {
+    public void setupLanguageTarget(Language language) {
         mLanguageSelectorTargetItemView.setupLanguage(language);
     }
 

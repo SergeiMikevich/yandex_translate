@@ -1,12 +1,15 @@
 package mikes.dept.yandextranslate.screen.translate;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mikes.dept.yandextranslate.R;
+import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.screen.base.BaseFragment;
 import mikes.dept.yandextranslate.screen.languages.LanguagesActivity;
+import mikes.dept.yandextranslate.utils.ExtraKeys;
 import mikes.dept.yandextranslate.widget.languageselector.LanguageSelectorView;
 import mikes.dept.yandextranslate.widget.languageselector.OnItemClickListenerLanguageSelector;
 import mikes.dept.yandextranslate.widget.loading.LoadingDialog;
@@ -44,7 +47,18 @@ public class TranslateFragment
 
     @Override
     public void navigateLanguages() {
-        LanguagesActivity.navigateLanguages((AppCompatActivity) getActivity());
+        Intent intent = new Intent(getActivity(), LanguagesActivity.class);
+        startActivityForResult(intent, LanguagesActivity.REQUEST_CODE);
+    }
+
+    @Override
+    public void setupLanguageSource(Language language) {
+        mLanguageSelectorView.setupLanguageSource(language);
+    }
+
+    @Override
+    public void setupLanguageTarget(Language language) {
+        mLanguageSelectorView.setupLanguageTarget(language);
     }
 
     @Override
@@ -70,6 +84,14 @@ public class TranslateFragment
     @Override
     public void onClickReplaceLanguages() {
         mPresenter.onClickReplaceLanguages();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent){
+        if(resultCode == Activity.RESULT_OK && requestCode == LanguagesActivity.REQUEST_CODE){
+            Language language = intent.getParcelableExtra(ExtraKeys.EXTRA_KEY_SELECTED_LANGUAGE);
+            mPresenter.updateSelectedLanguage(language);
+        }
     }
 
 }

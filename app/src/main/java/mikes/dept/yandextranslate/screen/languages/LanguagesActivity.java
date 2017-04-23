@@ -3,7 +3,6 @@ package mikes.dept.yandextranslate.screen.languages;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +17,7 @@ import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.screen.base.BaseActivity;
 import mikes.dept.yandextranslate.screen.languages.adapter.LanguagesAdapter;
 import mikes.dept.yandextranslate.screen.languages.adapter.OnItemClickListenerLanguage;
+import mikes.dept.yandextranslate.utils.ExtraKeys;
 import mikes.dept.yandextranslate.widget.divider.DividerItemDecoration;
 import mikes.dept.yandextranslate.widget.loading.LoadingDialog;
 import mikes.dept.yandextranslate.widget.loading.LoadingView;
@@ -43,9 +43,7 @@ public class LanguagesActivity
 
     private LoadingView mLoadingView;
 
-    public static void navigateLanguages(@NonNull AppCompatActivity activity) {
-        activity.startActivity(new Intent(activity, LanguagesActivity.class));
-    }
+    public final static int REQUEST_CODE = 123;
 
     @Override
     protected int getLayoutId() {
@@ -92,7 +90,10 @@ public class LanguagesActivity
 
     @Override
     public void onClickLanguage(@NonNull Language language) {
-        //TODO: on click language
+        Intent intent = new Intent();
+        intent.putExtra(ExtraKeys.EXTRA_KEY_SELECTED_LANGUAGE, language);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override

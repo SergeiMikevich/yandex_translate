@@ -1,5 +1,8 @@
 package mikes.dept.yandextranslate.screen.translate;
 
+import android.support.annotation.NonNull;
+
+import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.screen.base.BaseFragmentContract;
 
 /**
@@ -14,6 +17,10 @@ public interface TranslateContract {
 
         void navigateLanguages();
 
+        void setupLanguageSource(Language language);
+
+        void setupLanguageTarget(Language language);
+
     }
 
     interface Presenter extends BaseFragmentContract.Presenter {
@@ -23,6 +30,8 @@ public interface TranslateContract {
         void onClickLanguageTarget();
 
         void onClickReplaceLanguages();
+
+        void updateSelectedLanguage(@NonNull Language language);
 
     }
 

@@ -45,6 +45,10 @@ public class Language implements Parcelable {
         return mTitle;
     }
 
+    public Boolean equals(Language language) {
+        return language != null && this.getCode().equals(language.getCode()) && this.getTitle().equals(language.getTitle());
+    }
+
     @Override
     public int describeContents() {
         return 0;

@@ -2,7 +2,6 @@ package mikes.dept.yandextranslate.widget.languageselector;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -66,8 +65,13 @@ public class LanguageSelectorItemView extends LinearLayoutCompat {
         mTitleTextView.setText(title != null ? title : "");
     }
 
-    public void setupLanguage(@NonNull Language language) {
-        mLanguageTextView.setText(language.getTitle() + " (" + language.getCode() + ")");
+    public void setupLanguage(Language language) {
+        if(language == null) {
+            mLanguageTextView.setText("");
+        }
+        else {
+            mLanguageTextView.setText(language.getTitle() + " (" + language.getCode() + ")");
+        }
     }
 
 }
