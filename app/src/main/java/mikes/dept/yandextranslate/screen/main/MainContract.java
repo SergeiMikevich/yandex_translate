@@ -10,6 +10,8 @@ public interface MainContract {
 
     interface View {
 
+        void init();
+
         void navigateTranslate();
 
         void navigateFavorites();

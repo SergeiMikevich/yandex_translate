@@ -3,8 +3,6 @@ package mikes.dept.yandextranslate.screen.translate;
 import butterknife.ButterKnife;
 import mikes.dept.yandextranslate.R;
 import mikes.dept.yandextranslate.screen.base.BaseFragment;
-import mikes.dept.yandextranslate.screen.favorites.FavoritesContract;
-import mikes.dept.yandextranslate.screen.favorites.FavoritesPresenter;
 import mikes.dept.yandextranslate.widget.loading.LoadingDialog;
 import mikes.dept.yandextranslate.widget.loading.LoadingView;
 

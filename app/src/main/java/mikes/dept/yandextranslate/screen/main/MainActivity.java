@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import mikes.dept.yandextranslate.R;
 import mikes.dept.yandextranslate.screen.base.BaseActivity;
 import mikes.dept.yandextranslate.screen.favorites.FavoritesFragment;
@@ -16,6 +18,9 @@ public class MainActivity
         extends BaseActivity<MainContract.Presenter>
         implements MainContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
 
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView mBottomNavigationView;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -24,6 +29,13 @@ public class MainActivity
     @Override
     protected MainContract.Presenter getPresenter() {
         return new MainPresenter(this);
+    }
+
+    @Override
+    public void init() {
+        ButterKnife.bind(this);
+        mBottomNavigationView.setOnNavigationItemSelectedListener(this);
+        mPresenter.onClickTranslate();
     }
 
     @Override
