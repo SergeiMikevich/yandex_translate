@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by mikesdept on 23.4.17.
  */
 
-public abstract class BaseActivity<P extends BaseContract.Presenter> extends AppCompatActivity {
+public abstract class BaseActivity<P extends BaseActivityContract.Presenter> extends AppCompatActivity {
 
     protected P mPresenter;
 

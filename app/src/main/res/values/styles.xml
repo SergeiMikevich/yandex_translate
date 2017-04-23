@@ -11,4 +11,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:theme">@style/BottomNavigationViewTheme</item>
+    </style>
+
+    <style name="BottomNavigationViewTheme">
+        <item name="itemIconTint">@color/bottom_navigation_item_background_colors</item>
+        <item name="itemTextColor">@color/bottom_navigation_item_background_colors</item>
+    </style>
+
 </resources>

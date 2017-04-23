@@ -6,7 +6,7 @@ import mikes.dept.yandextranslate.widget.loading.LoadingView;
  * Created by mikesdept on 23.4.17.
  */
 
-public interface BaseContract {
+public interface BaseFragmentContract {
 
     interface View extends LoadingView {
 
@@ -14,15 +14,7 @@ public interface BaseContract {
 
     interface Presenter {
 
-        void onCreate();
-
-        void onStart();
-
-        void onResume();
-
-        void onPause();
-
-        void onStop();
+        void onCreateView();
 
     }
 
