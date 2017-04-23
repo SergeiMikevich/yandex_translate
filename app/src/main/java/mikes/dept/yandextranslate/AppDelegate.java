@@ -12,6 +12,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.rx.RealmObservableFactory;
 import mikes.dept.yandextranslate.api.ApiFactory;
+import mikes.dept.yandextranslate.repository.RepositoryProvider;
 
 /**
  * Created by mikesdept on 23.4.17.
@@ -38,6 +39,7 @@ public class AppDelegate extends Application {
         Realm.setDefaultConfiguration(configuration);
 
         ApiFactory.recreate();
+        RepositoryProvider.init();
 
     }
 
