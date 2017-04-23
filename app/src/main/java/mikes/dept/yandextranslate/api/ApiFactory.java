@@ -3,6 +3,7 @@ package mikes.dept.yandextranslate.api;
 import android.support.annotation.NonNull;
 
 import mikes.dept.yandextranslate.BuildConfig;
+import mikes.dept.yandextranslate.api.interceptor.ApiKeyInterceptor;
 import mikes.dept.yandextranslate.api.interceptor.LoggingInterceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -70,6 +71,7 @@ public class ApiFactory {
     private static OkHttpClient buildClient() {
         return new OkHttpClient.Builder()
                 .addInterceptor(LoggingInterceptor.create())
+                .addInterceptor(ApiKeyInterceptor.create())
                 .build();
     }
 
