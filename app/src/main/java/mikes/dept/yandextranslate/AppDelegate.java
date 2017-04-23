@@ -11,6 +11,7 @@ import com.orhanobut.hawk.LogLevel;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.rx.RealmObservableFactory;
+import mikes.dept.yandextranslate.api.ApiFactory;
 
 /**
  * Created by mikesdept on 23.4.17.
@@ -35,6 +36,9 @@ public class AppDelegate extends Application {
                 .rxFactory(new RealmObservableFactory())
                 .build();
         Realm.setDefaultConfiguration(configuration);
+
+        ApiFactory.recreate();
+
     }
 
     @NonNull
