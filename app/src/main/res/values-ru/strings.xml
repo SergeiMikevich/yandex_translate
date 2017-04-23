@@ -1,4 +1,11 @@
 <resources>
+
     <string name="app_name">Яндекс Переводчик</string>
     <string name="loading">Загрузка…</string>
+
+    <!--BOTTOM NAVIGATION MENU-->
+    <string name="bottom_navigation_translate">Переводчик</string>
+    <string name="bottom_navigation_favorites">Избранное</string>
+    <string name="bottom_navigation_settings">Настройки</string>
+
 </resources>
