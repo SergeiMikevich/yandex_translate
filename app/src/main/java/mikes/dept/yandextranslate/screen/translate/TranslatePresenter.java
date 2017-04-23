@@ -2,8 +2,6 @@ package mikes.dept.yandextranslate.screen.translate;
 
 import android.support.annotation.NonNull;
 
-import mikes.dept.yandextranslate.screen.favorites.FavoritesContract;
-
 /**
  * Created by mikesdept on 23.4.17.
  */

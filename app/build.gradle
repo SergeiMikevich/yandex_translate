@@ -15,6 +15,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "API_ENDPOINT", '"https://translate.yandex.net/api/v1.5/"'
+        buildConfigField "String", "API_KEY", '"trnsl.1.1.20170423T123301Z.92c1a17424706fc7.761c5f91c868a3be3bc9f495b25da1a92b2aa92c"'
     }
     buildTypes {
         release {
