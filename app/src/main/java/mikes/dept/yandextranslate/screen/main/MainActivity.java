@@ -6,17 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
-import butterknife.ButterKnife;
 import mikes.dept.yandextranslate.R;
 import mikes.dept.yandextranslate.screen.base.BaseActivity;
-import mikes.dept.yandextranslate.widget.loading.LoadingDialog;
-import mikes.dept.yandextranslate.widget.loading.LoadingView;
+import mikes.dept.yandextranslate.screen.favorites.FavoritesFragment;
+import mikes.dept.yandextranslate.screen.settings.SettingsFragment;
+import mikes.dept.yandextranslate.screen.translate.TranslateFragment;
 
 public class MainActivity
         extends BaseActivity<MainContract.Presenter>
         implements MainContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
-
-    private LoadingView mLoadingView;
 
     @Override
     protected int getLayoutId() {
@@ -29,34 +27,18 @@ public class MainActivity
     }
 
     @Override
-    public void init() {
-        ButterKnife.bind(this);
-        mLoadingView = LoadingDialog.view(getSupportFragmentManager());
-    }
-
-    @Override
     public void navigateTranslate() {
-        //TODO: navigate translate fragment
+        navigateFragment(new TranslateFragment());
     }
 
     @Override
     public void navigateFavorites() {
-        //TODO: navigate favorites fragment
+        navigateFragment(new FavoritesFragment());
     }
 
     @Override
     public void navigateSettings() {
-        //TODO: navigate settings fragment
-    }
-
-    @Override
-    public void showLoadingIndicator() {
-        mLoadingView.showLoadingIndicator();
-    }
-
-    @Override
-    public void hideLoadingIndicator() {
-        mLoadingView.hideLoadingIndicator();
+        navigateFragment(new SettingsFragment());
     }
 
     @Override
