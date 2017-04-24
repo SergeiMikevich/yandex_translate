@@ -49,7 +49,7 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
     }
 
     @Override
-    public Observable<String> translate(@NonNull String languageSource, @NonNull String languageTarget, @NonNull String text) {
+    public Observable<History> translate(@NonNull String languageSource, @NonNull String languageTarget, @NonNull String text) {
         String language = languageSource + "-" + languageTarget;
         return Observable.just(0)
                 .flatMap(integer -> {
@@ -58,16 +58,13 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
                             .equalTo(History.FIELD_LANGUAGE, language)
                             .findFirst();
                     if(history != null) {
-                        return Observable.just(history.getTextTarget());
+                        History historyResult = new History(history.isFavorite(), history.getTextSource(), history.getTextTarget(), history.getLanguage());
+                        return Observable.just(historyResult);
                     }
                     else {
                         return ApiFactory.getYandexTranslateService()
                                 .translate(language, text)
-                                .flatMap(translateResponse -> {
-                                    String translateResultText = getTranslateResultText(translateResponse);
-                                    saveResult(text, translateResultText, language);
-                                    return Observable.just(translateResultText);
-                                });
+                                .flatMap(translateResponse -> Observable.just(saveResult(text, getTranslateResultText(translateResponse), language)));
                     }
                 })
                 .onErrorResumeNext(Observable::error);
@@ -80,6 +77,23 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
         return Observable.just(realm.copyFromRealm(historyResults));
     }
 
+    @Override
+    public Observable<Boolean> updateHistory(@NonNull History history) {
+        return Observable.just(0)
+                .flatMap(integer -> {
+                    Realm.getDefaultInstance().executeTransaction(realm -> {
+                        History historyForUpdate = realm.where(History.class)
+                                .equalTo(History.FIELD_SOURCE, history.getTextSource())
+                                .equalTo(History.FIELD_LANGUAGE, history.getLanguage())
+                                .findFirst();
+                        historyForUpdate.setFavorite(true);
+                        realm.insertOrUpdate(historyForUpdate);
+                    });
+                    return Observable.just(true);
+                })
+                .onErrorResumeNext(Observable::error);
+    }
+
     private String getTranslateResultText(TranslateResponse translateResponse) {
         String translateResultText = "";
         for(String translate : translateResponse.getText()) {
@@ -88,8 +102,10 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
         return translateResultText;
     }
 
-    private void saveResult(String textSource, String textTarget, String language) {
-        Realm.getDefaultInstance().executeTransaction(realm -> realm.insert(new History(textSource, textTarget, language)));
+    private History saveResult(String textSource, String textTarget, String language) {
+        History history = new History(textSource, textTarget, language);
+        Realm.getDefaultInstance().executeTransaction(realm -> realm.insert(history));
+        return history;
     }
 
 }

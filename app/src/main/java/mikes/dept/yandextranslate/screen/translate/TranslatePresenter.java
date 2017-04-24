@@ -3,6 +3,8 @@ package mikes.dept.yandextranslate.screen.translate;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import mikes.dept.yandextranslate.R;
+import mikes.dept.yandextranslate.model.content.History;
 import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.repository.RepositoryProvider;
 import rx.android.schedulers.AndroidSchedulers;
@@ -24,6 +26,7 @@ public class TranslatePresenter implements TranslateContract.Presenter {
     private Language mLanguageTarget;
 
     private String mCurrentTextForTranslate = "";
+    private History mCurrentHistory;
 
     public TranslatePresenter(@NonNull TranslateContract.View view) {
         mView = view;
@@ -94,7 +97,17 @@ public class TranslatePresenter implements TranslateContract.Presenter {
 
     @Override
     public void onClickFavorite() {
-
+        if(mCurrentHistory != null) {
+            RepositoryProvider.provideYandexTranslateRepository()
+                    .updateHistory(mCurrentHistory)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(isOk -> {
+                        if(isOk) {
+                            mView.showMessage(R.string.your_favorite_translate_updated);
+                        }
+                    }, throwable -> mView.showMessage(R.string.error));
+        }
     }
 
     private void replaceLanguages() {
@@ -110,11 +123,18 @@ public class TranslatePresenter implements TranslateContract.Presenter {
                 .translate(mLanguageSource.getCode(), mLanguageTarget.getCode(), mCurrentTextForTranslate)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(mView::setResult, throwable -> mView.setResult(""));
+                .subscribe(history -> {
+                    mCurrentHistory = history;
+                    mView.setResult(history.getTextTarget());
+                }, throwable -> {
+                    mCurrentHistory = null;
+                    mView.setResult("");
+                });
     }
 
     private void checkIsTextForTranslateEmpty() {
         if(TextUtils.isEmpty(mCurrentTextForTranslate)) {
+            mCurrentHistory = null;
             mView.setResult("");
         }
         else {

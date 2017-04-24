@@ -16,8 +16,10 @@ public interface YandexTranslateRepository {
 
     Observable<List<Language>> getLanguages(@NonNull String ui);
 
-    Observable<String> translate(@NonNull String languageSource, @NonNull String languageTarget, @NonNull String text);
+    Observable<History> translate(@NonNull String languageSource, @NonNull String languageTarget, @NonNull String text);
 
     Observable<List<History>> loadHistory();
+
+    Observable<Boolean> updateHistory(@NonNull History history);
 
 }

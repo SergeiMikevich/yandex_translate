@@ -15,6 +15,7 @@
     <!--TRANSLATE_FORM_STRINGS-->
     <string name="hint_enter_text">Введите текст</string>
     <string name="hint_result_of_translation">Результат перевода</string>
+    <string name="your_favorite_translate_updated">Ваш избранный перевод обновлен</string>
 
     <!--FAVORITES-->
     <string name="favorite_history">История</string>
@@ -22,5 +23,6 @@
 
     <!--OTHERS-->
     <string name="in_development">В разработке…</string>
+    <string name="error">Ошибка</string>
 
 </resources>

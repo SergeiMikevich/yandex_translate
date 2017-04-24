@@ -27,6 +27,8 @@ public interface TranslateContract {
 
         void setResult(@NonNull String translateResult);
 
+        void showMessage(@NonNull Integer messageId);
+
     }
 
     interface Presenter extends BaseFragmentContract.Presenter {

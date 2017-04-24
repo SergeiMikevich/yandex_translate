@@ -15,6 +15,7 @@
     <!--TRANSLATE_FORM_STRINGS-->
     <string name="hint_enter_text">Enter text</string>
     <string name="hint_result_of_translation">Result of translation</string>
+    <string name="your_favorite_translate_updated">Your favorite translate updated</string>
 
     <!--FAVORITES-->
     <string name="favorite_history">History</string>
@@ -22,5 +23,6 @@
 
     <!--OTHERS-->
     <string name="in_development">In development…</string>
+    <string name="error">Error</string>
 
 </resources>
