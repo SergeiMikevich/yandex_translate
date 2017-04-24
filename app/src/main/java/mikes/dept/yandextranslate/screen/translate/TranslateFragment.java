@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,6 +91,11 @@ public class TranslateFragment
     }
 
     @Override
+    public void showMessage(@NonNull Integer messageId) {
+        Toast.makeText(getActivity(), getString(messageId), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void showLoadingIndicator() {
         mLoadingView.showLoadingIndicator();
     }
@@ -130,6 +136,11 @@ public class TranslateFragment
     @Override
     public void onClickClearForm() {
         mPresenter.onClickClearForm();
+    }
+
+    @Override
+    public void onClickFavorite() {
+        mPresenter.onClickFavorite();
     }
 
 }

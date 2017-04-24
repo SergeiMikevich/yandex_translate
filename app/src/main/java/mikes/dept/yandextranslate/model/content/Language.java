@@ -4,14 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
+import io.realm.RealmObject;
+
 /**
  * Created by mikesdept on 23.4.17.
  */
 
-public class Language implements Parcelable {
+public class Language extends RealmObject implements Parcelable {
 
     private String mCode;
     private String mTitle;
+
+    public Language() {
+
+    }
 
     public Language(@NonNull String code, @NonNull String title) {
         mCode = code;

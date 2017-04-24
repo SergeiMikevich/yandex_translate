@@ -2,6 +2,8 @@ package mikes.dept.yandextranslate.screen.languages;
 
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
+
 import mikes.dept.yandextranslate.repository.RepositoryProvider;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -51,7 +53,7 @@ public class LanguagesPresenter implements LanguagesContract.Presenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(mView::showLoadingIndicator)
                 .doOnTerminate(mView::hideLoadingIndicator)
-                .subscribe(mView::showLanguages);
+                .subscribe(mView::showLanguages, throwable -> mView.showLanguages(new ArrayList<>()));
     }
 
 }

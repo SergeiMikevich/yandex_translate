@@ -11,12 +11,13 @@ import butterknife.ButterKnife;
 import mikes.dept.yandextranslate.R;
 import mikes.dept.yandextranslate.screen.base.BaseActivity;
 import mikes.dept.yandextranslate.screen.favorites.FavoritesFragment;
+import mikes.dept.yandextranslate.screen.favorites.OnRefreshFavoritesFragmentListener;
 import mikes.dept.yandextranslate.screen.settings.SettingsFragment;
 import mikes.dept.yandextranslate.screen.translate.TranslateFragment;
 
 public class MainActivity
         extends BaseActivity<MainContract.Presenter>
-        implements MainContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
+        implements MainContract.View, BottomNavigationView.OnNavigationItemSelectedListener, OnRefreshFavoritesFragmentListener {
 
     @BindView(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigationView;
@@ -73,6 +74,11 @@ public class MainActivity
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onRefreshFavorites() {
+        navigateFragment(new FavoritesFragment());
     }
 
 }

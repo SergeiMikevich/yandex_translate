@@ -27,6 +27,8 @@ public interface TranslateContract {
 
         void setResult(@NonNull String translateResult);
 
+        void showMessage(@NonNull Integer messageId);
+
     }
 
     interface Presenter extends BaseFragmentContract.Presenter {
@@ -42,6 +44,8 @@ public interface TranslateContract {
         void onTextChanged(@NonNull String text);
 
         void onClickClearForm();
+
+        void onClickFavorite();
 
     }
 

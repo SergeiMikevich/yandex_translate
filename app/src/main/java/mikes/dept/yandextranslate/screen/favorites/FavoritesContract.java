@@ -1,5 +1,7 @@
 package mikes.dept.yandextranslate.screen.favorites;
 
+import android.support.annotation.NonNull;
+
 import mikes.dept.yandextranslate.screen.base.BaseFragmentContract;
 
 /**
@@ -8,15 +10,23 @@ import mikes.dept.yandextranslate.screen.base.BaseFragmentContract;
 
 public interface FavoritesContract {
 
-    interface View extends BaseFragmentContract.View {
+    interface View {
 
         void init();
+
+        void showDialog();
+
+        void showMessage(@NonNull Integer messageId);
+
+        void refreshFavorites();
 
     }
 
     interface Presenter extends BaseFragmentContract.Presenter {
 
+        void onClickDeleteHistory();
 
+        void onClickDeleteHistoryConfirmed();
 
     }
 
