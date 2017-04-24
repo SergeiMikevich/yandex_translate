@@ -24,9 +24,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
         mHistoryList = new ArrayList<>();
     }
 
-    public void changeDataSet(@NonNull List<History> mHistoryList){
+    public void changeDataSet(@NonNull List<History> historyList){
         mHistoryList.clear();
-        mHistoryList.addAll(mHistoryList);
+        mHistoryList.addAll(historyList);
         notifyDataSetChanged();
     }
 

@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
+import mikes.dept.yandextranslate.model.content.History;
 import mikes.dept.yandextranslate.model.content.Language;
 import rx.Observable;
 
@@ -16,5 +17,7 @@ public interface YandexTranslateRepository {
     Observable<List<Language>> getLanguages(@NonNull String ui);
 
     Observable<String> translate(@NonNull String languageSource, @NonNull String languageTarget, @NonNull String text);
+
+    Observable<List<History>> loadHistory();
 
 }

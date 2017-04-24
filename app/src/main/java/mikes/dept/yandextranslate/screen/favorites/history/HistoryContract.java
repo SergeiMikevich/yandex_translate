@@ -1,5 +1,8 @@
 package mikes.dept.yandextranslate.screen.favorites.history;
 
+import java.util.List;
+
+import mikes.dept.yandextranslate.model.content.History;
 import mikes.dept.yandextranslate.screen.base.BaseFragmentContract;
 
 /**
@@ -11,6 +14,8 @@ public interface HistoryContract {
     interface View {
 
         void init();
+
+        void showHistory(List<History> histories);
 
     }
 

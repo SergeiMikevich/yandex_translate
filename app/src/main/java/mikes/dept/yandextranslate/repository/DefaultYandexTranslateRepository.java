@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 import mikes.dept.yandextranslate.api.ApiFactory;
 import mikes.dept.yandextranslate.model.content.History;
 import mikes.dept.yandextranslate.model.content.Language;
@@ -57,6 +58,13 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
                     }
                 })
                 .onErrorResumeNext(Observable::error);
+    }
+
+    @Override
+    public Observable<List<History>> loadHistory() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<History> historyResults = realm.where(History.class).findAll();
+        return Observable.just(realm.copyFromRealm(historyResults));
     }
 
     private String getTranslateResultText(TranslateResponse translateResponse) {
