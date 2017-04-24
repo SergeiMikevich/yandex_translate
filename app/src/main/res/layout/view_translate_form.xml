@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_translate_form_frame">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <mikes.dept.yandextranslate.widget.translateform.RxEditText
+                android:id="@+id/translate_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:background="@android:color/transparent"
+                android:textColorHint="@color/secondaryText"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp"
+                android:hint="@string/hint_enter_text"/>
+
+            <include
+                layout="@layout/view_divider_vertical"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <mikes.dept.yandextranslate.widget.translateform.ButtonRippleCircle
+                    android:id="@+id/voice_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    custom:button_ripple_circle_icon="@mipmap/ic_settings_voice_black_24dp"/>
+
+                <mikes.dept.yandextranslate.widget.translateform.ButtonRippleCircle
+                    android:id="@+id/volume_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    custom:button_ripple_circle_icon="@mipmap/ic_volume_up_black_24dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/view_divider_horizontal"/>
+
+        <mikes.dept.yandextranslate.widget.translateform.ButtonRippleCircle
+            android:id="@+id/clear_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            custom:button_ripple_circle_icon="@mipmap/ic_close_black_24dp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

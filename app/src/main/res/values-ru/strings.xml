@@ -12,4 +12,10 @@
     <string name="title_language_source">Исходный язык</string>
     <string name="title_language_target">Язык перевода</string>
 
+    <!--TRANSLATE_FORM_STRINGS-->
+    <string name="hint_enter_text">Введите текст</string>
+
+    <!--OTHERS-->
+    <string name="in_development">В разработке…</string>
+
 </resources>

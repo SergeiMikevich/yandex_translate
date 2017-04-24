@@ -5,4 +5,8 @@
         <attr name="view_item_language_selector_title" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="ButtonRippleCircle">
+        <attr name="button_ripple_circle_icon" format="integer" />
+    </declare-styleable>
+
 </resources>

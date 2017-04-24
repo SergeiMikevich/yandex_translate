@@ -21,6 +21,14 @@ public interface TranslateContract {
 
         void setupLanguageTarget(Language language);
 
+        void setEditableText(@NonNull Boolean isEditable);
+
+        void clearForm();
+
+        void setResults(@NonNull String resultTranslate);
+
+        void showMessage(@NonNull Integer messageId);
+
     }
 
     interface Presenter extends BaseFragmentContract.Presenter {
@@ -32,6 +40,14 @@ public interface TranslateContract {
         void onClickReplaceLanguages();
 
         void updateSelectedLanguage(@NonNull Language language);
+
+        void onTextChanged(@NonNull String text);
+
+        void onClickVoice();
+
+        void onClickVolume();
+
+        void onClickClearForm();
 
     }
 

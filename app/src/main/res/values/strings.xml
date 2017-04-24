@@ -12,4 +12,10 @@
     <string name="title_language_source">Source language</string>
     <string name="title_language_target">Target language</string>
 
+    <!--TRANSLATE_FORM_STRINGS-->
+    <string name="hint_enter_text">Enter text</string>
+
+    <!--OTHERS-->
+    <string name="in_development">In development…</string>
+
 </resources>

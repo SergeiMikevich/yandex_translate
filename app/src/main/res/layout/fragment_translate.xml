@@ -13,4 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <mikes.dept.yandextranslate.widget.translateform.TranslateFormView
+        android:id="@+id/translate_form_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
