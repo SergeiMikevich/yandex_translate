@@ -8,7 +8,7 @@ import mikes.dept.yandextranslate.screen.base.BaseFragmentContract;
 
 public interface FavoritesContract {
 
-    interface View extends BaseFragmentContract.View {
+    interface View {
 
         void init();
 

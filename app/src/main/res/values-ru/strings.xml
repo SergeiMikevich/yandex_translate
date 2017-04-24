@@ -16,6 +16,10 @@
     <string name="hint_enter_text">Введите текст</string>
     <string name="hint_result_of_translation">Результат перевода</string>
 
+    <!--FAVORITES-->
+    <string name="favorite_history">История</string>
+    <string name="favorite_favorites">Избранное</string>
+
     <!--OTHERS-->
     <string name="in_development">В разработке…</string>
 
