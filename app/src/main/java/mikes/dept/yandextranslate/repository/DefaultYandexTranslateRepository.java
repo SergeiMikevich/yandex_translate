@@ -32,9 +32,9 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
     }
 
     @Override
-    public Observable<String> translate(@NonNull String language, @NonNull String text) {
+    public Observable<String> translate(@NonNull String languageSource, @NonNull String languageTarget, @NonNull String text) {
         return ApiFactory.getYandexTranslateService()
-                .translate(language, text)
+                .translate(languageSource + "-" + languageTarget, text)
                 .flatMap(translateResponse -> {
                     String translateResult = "";
                     for(String translate : translateResponse.getText()) {

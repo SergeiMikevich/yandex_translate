@@ -14,7 +14,7 @@
     </FrameLayout>
 
     <include
-        layout="@layout/view_divider"/>
+        layout="@layout/view_divider_horizontal"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"

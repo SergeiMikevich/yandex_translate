@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LanguageSelectorItemView">
+        <attr name="view_item_language_selector_title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonRippleCircle">
+        <attr name="button_ripple_circle_icon" format="integer" />
+    </declare-styleable>
+
+</resources>

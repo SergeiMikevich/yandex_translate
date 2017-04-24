@@ -8,4 +8,15 @@
     <string name="bottom_navigation_favorites">Избранное</string>
     <string name="bottom_navigation_settings">Настройки</string>
 
+    <!--LANGUAGES_TITLES-->
+    <string name="title_language_source">Исходный язык</string>
+    <string name="title_language_target">Язык перевода</string>
+
+    <!--TRANSLATE_FORM_STRINGS-->
+    <string name="hint_enter_text">Введите текст</string>
+    <string name="hint_result_of_translation">Результат перевода</string>
+
+    <!--OTHERS-->
+    <string name="in_development">В разработке…</string>
+
 </resources>
