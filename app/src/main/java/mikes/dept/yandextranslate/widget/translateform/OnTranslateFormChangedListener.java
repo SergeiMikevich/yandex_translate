@@ -10,10 +10,6 @@ public interface OnTranslateFormChangedListener {
 
     void onTextChanged(@NonNull String text);
 
-    void onClickVoice();
-
-    void onClickVolume();
-
     void onClickClearForm();
 
 }

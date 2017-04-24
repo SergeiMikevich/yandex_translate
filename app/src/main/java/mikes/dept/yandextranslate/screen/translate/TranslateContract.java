@@ -25,9 +25,7 @@ public interface TranslateContract {
 
         void clearForm();
 
-        void setResults(@NonNull String resultTranslate);
-
-        void showMessage(@NonNull Integer messageId);
+        void setResult(@NonNull String translateResult);
 
     }
 
@@ -42,10 +40,6 @@ public interface TranslateContract {
         void updateSelectedLanguage(@NonNull Language language);
 
         void onTextChanged(@NonNull String text);
-
-        void onClickVoice();
-
-        void onClickVolume();
 
         void onClickClearForm();
 

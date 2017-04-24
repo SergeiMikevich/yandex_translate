@@ -3,10 +3,8 @@ package mikes.dept.yandextranslate.screen.translate;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,13 +85,8 @@ public class TranslateFragment
     }
 
     @Override
-    public void setResults(@NonNull String resultTranslate) {
-        Log.d("TAG", "RESULT: " + resultTranslate);
-    }
-
-    @Override
-    public void showMessage(@NonNull Integer messageId) {
-        Snackbar.make(mToolbar, getString(messageId), Snackbar.LENGTH_SHORT).show();
+    public void setResult(@NonNull String translateResult) {
+        mTranslateFormView.setResult(translateResult);
     }
 
     @Override
@@ -132,16 +125,6 @@ public class TranslateFragment
     @Override
     public void onTextChanged(@NonNull String text) {
         mPresenter.onTextChanged(text);
-    }
-
-    @Override
-    public void onClickVoice() {
-        mPresenter.onClickVoice();
-    }
-
-    @Override
-    public void onClickVolume() {
-        mPresenter.onClickVolume();
     }
 
     @Override

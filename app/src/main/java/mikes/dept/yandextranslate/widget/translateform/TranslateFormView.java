@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.text.method.KeyListener;
 import android.util.AttributeSet;
+import android.widget.EditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,11 +22,8 @@ public class TranslateFormView
     @BindView(R.id.translate_edit_text)
     RxEditText mTranslateEditText;
 
-    @BindView(R.id.voice_button)
-    ButtonRippleCircle mVoiceButton;
-
-    @BindView(R.id.volume_button)
-    ButtonRippleCircle mVolumeButton;
+    @BindView(R.id.translate_result_edit_text)
+    EditText mTranslateResultEditText;
 
     @BindView(R.id.clear_button)
     ButtonRippleCircle mClearButton;
@@ -53,10 +51,9 @@ public class TranslateFormView
         inflate(getContext(), R.layout.view_translate_form, this);
         ButterKnife.bind(this);
         mTranslateEditText.setOnRxTextChangeListener(this, 500);
+        mTranslateResultEditText.setKeyListener(null);
         mKeyListener = mTranslateEditText.getKeyListener();
         setEditableText(false);
-        mVoiceButton.findViewById(R.id.button).setOnClickListener(v -> onClickVoice());
-        mVolumeButton.findViewById(R.id.button).setOnClickListener(v -> onClickVolume());
         mClearButton.findViewById(R.id.button).setOnClickListener(v -> onClickClear());
     }
 
@@ -71,22 +68,15 @@ public class TranslateFormView
 
     public void clearForm() {
         mTranslateEditText.setText("");
+        mTranslateResultEditText.setText("");
+    }
+
+    public void setResult(@NonNull String translateResult) {
+        mTranslateResultEditText.setText(translateResult);
     }
 
     public void setOnTranslateFormChangedListener(@NonNull OnTranslateFormChangedListener onTranslateFormChangedListener) {
         mOnTranslateFormChangedListener = onTranslateFormChangedListener;
-    }
-
-    private void onClickVoice() {
-        if(mOnTranslateFormChangedListener != null) {
-            mOnTranslateFormChangedListener.onClickVoice();
-        }
-    }
-
-    private void onClickVolume() {
-        if(mOnTranslateFormChangedListener != null) {
-            mOnTranslateFormChangedListener.onClickVolume();
-        }
     }
 
     private void onClickClear() {

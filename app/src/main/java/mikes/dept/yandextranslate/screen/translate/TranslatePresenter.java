@@ -3,7 +3,6 @@ package mikes.dept.yandextranslate.screen.translate;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import mikes.dept.yandextranslate.R;
 import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.repository.RepositoryProvider;
 import rx.android.schedulers.AndroidSchedulers;
@@ -89,16 +88,6 @@ public class TranslatePresenter implements TranslateContract.Presenter {
     }
 
     @Override
-    public void onClickVoice() {
-        mView.showMessage(R.string.in_development);
-    }
-
-    @Override
-    public void onClickVolume() {
-        mView.showMessage(R.string.in_development);
-    }
-
-    @Override
     public void onClickClearForm() {
         mView.clearForm();
     }
@@ -116,12 +105,12 @@ public class TranslatePresenter implements TranslateContract.Presenter {
                 .translate(mLanguageSource.getCode(), mLanguageTarget.getCode(), mCurrentTextForTranslate)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(mView::setResults, throwable -> mView.setResults(""));
+                .subscribe(mView::setResult, throwable -> mView.setResult(""));
     }
 
     private void checkIsTextForTranslateEmpty() {
         if(TextUtils.isEmpty(mCurrentTextForTranslate)) {
-            mView.setResults("");
+            mView.setResult("");
         }
         else {
             translate();

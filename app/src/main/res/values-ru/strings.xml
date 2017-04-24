@@ -14,6 +14,7 @@
 
     <!--TRANSLATE_FORM_STRINGS-->
     <string name="hint_enter_text">Введите текст</string>
+    <string name="hint_result_of_translation">Результат перевода</string>
 
     <!--OTHERS-->
     <string name="in_development">В разработке…</string>
