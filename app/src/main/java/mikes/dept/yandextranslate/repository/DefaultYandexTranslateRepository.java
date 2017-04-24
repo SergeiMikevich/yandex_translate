@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -30,9 +31,21 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
                     languages.add(new Language(languagesResponseContent.getEnglishCode(), languagesResponseContent.getEnglishTitle()));
                     languages.add(new Language(languagesResponseContent.getGermanCode(), languagesResponseContent.getGermanTitle()));
                     languages.add(new Language(languagesResponseContent.getRussianCode(), languagesResponseContent.getRussianTitle()));
+                    Realm.getDefaultInstance().executeTransaction(realm -> {
+                        realm.delete(Language.class);
+                        realm.insert(languages);
+                    });
                     return Observable.just(languages);
                 })
-                .onErrorResumeNext(Observable::error);
+                .onErrorResumeNext(throwable -> {
+                    Realm realm = Realm.getDefaultInstance();
+                    RealmResults<Language> languageRealmResults = realm.where(Language.class).findAll();
+                    if(languageRealmResults.size() > 0) {
+                        return Observable.just(realm.copyFromRealm(languageRealmResults));
+                    }else {
+                        return Observable.error(new NoSuchElementException());
+                    }
+                });
     }
 
     @Override
