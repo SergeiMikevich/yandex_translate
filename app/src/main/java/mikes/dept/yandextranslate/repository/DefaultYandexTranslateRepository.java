@@ -5,9 +5,12 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
 import mikes.dept.yandextranslate.api.ApiFactory;
+import mikes.dept.yandextranslate.model.content.History;
 import mikes.dept.yandextranslate.model.content.Language;
 import mikes.dept.yandextranslate.model.response.LanguagesResponseContent;
+import mikes.dept.yandextranslate.model.response.TranslateResponse;
 import rx.Observable;
 
 /**
@@ -33,16 +36,39 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
 
     @Override
     public Observable<String> translate(@NonNull String languageSource, @NonNull String languageTarget, @NonNull String text) {
-        return ApiFactory.getYandexTranslateService()
-                .translate(languageSource + "-" + languageTarget, text)
-                .flatMap(translateResponse -> {
-                    String translateResult = "";
-                    for(String translate : translateResponse.getText()) {
-                        translateResult += translate;
+        String language = languageSource + "-" + languageTarget;
+        return Observable.just(0)
+                .flatMap(integer -> {
+                    History history = Realm.getDefaultInstance().where(History.class)
+                            .equalTo(History.FIELD_SOURCE, text)
+                            .equalTo(History.FIELD_LANGUAGE, language)
+                            .findFirst();
+                    if(history != null) {
+                        return Observable.just(history.getTextTarget());
                     }
-                    return Observable.just(translateResult);
+                    else {
+                        return ApiFactory.getYandexTranslateService()
+                                .translate(language, text)
+                                .flatMap(translateResponse -> {
+                                    String translateResultText = getTranslateResultText(translateResponse);
+                                    saveResult(text, translateResultText, language);
+                                    return Observable.just(translateResultText);
+                                });
+                    }
                 })
                 .onErrorResumeNext(Observable::error);
+    }
+
+    private String getTranslateResultText(TranslateResponse translateResponse) {
+        String translateResultText = "";
+        for(String translate : translateResponse.getText()) {
+            translateResultText += translate;
+        }
+        return translateResultText;
+    }
+
+    private void saveResult(String textSource, String textTarget, String language) {
+        Realm.getDefaultInstance().executeTransaction(realm -> realm.insert(new History(textSource, textTarget, language)));
     }
 
 }

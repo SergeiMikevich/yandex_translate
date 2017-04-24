@@ -132,4 +132,9 @@ public class TranslateFragment
         mPresenter.onClickClearForm();
     }
 
+    @Override
+    public void onClickFavorite() {
+        mPresenter.onClickFavorite();
+    }
+
 }

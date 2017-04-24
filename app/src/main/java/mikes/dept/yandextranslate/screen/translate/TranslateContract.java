@@ -43,6 +43,8 @@ public interface TranslateContract {
 
         void onClickClearForm();
 
+        void onClickFavorite();
+
     }
 
 }

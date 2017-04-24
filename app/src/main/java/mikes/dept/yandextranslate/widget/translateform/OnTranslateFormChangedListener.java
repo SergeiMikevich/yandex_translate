@@ -12,4 +12,6 @@ public interface OnTranslateFormChangedListener {
 
     void onClickClearForm();
 
+    void onClickFavorite();
+
 }

@@ -92,6 +92,11 @@ public class TranslatePresenter implements TranslateContract.Presenter {
         mView.clearForm();
     }
 
+    @Override
+    public void onClickFavorite() {
+
+    }
+
     private void replaceLanguages() {
         Language languageReplace = mLanguageSource;
         mLanguageSource = mLanguageTarget;

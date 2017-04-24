@@ -28,6 +28,9 @@ public class TranslateFormView
     @BindView(R.id.clear_button)
     ButtonRippleCircle mClearButton;
 
+    @BindView(R.id.favorite_button)
+    ButtonRippleCircle mFavoriteButton;
+
     KeyListener mKeyListener;
 
     private OnTranslateFormChangedListener mOnTranslateFormChangedListener;
@@ -55,6 +58,7 @@ public class TranslateFormView
         mKeyListener = mTranslateEditText.getKeyListener();
         setEditableText(false);
         mClearButton.findViewById(R.id.button).setOnClickListener(v -> onClickClear());
+        mFavoriteButton.findViewById(R.id.button).setOnClickListener(v -> onClickFavorite());
     }
 
     public void setEditableText(@NonNull Boolean isEditable) {
@@ -82,6 +86,12 @@ public class TranslateFormView
     private void onClickClear() {
         if(mOnTranslateFormChangedListener != null) {
             mOnTranslateFormChangedListener.onClickClearForm();
+        }
+    }
+
+    private void onClickFavorite() {
+        if(mOnTranslateFormChangedListener != null) {
+            mOnTranslateFormChangedListener.onClickFavorite();
         }
     }
 
