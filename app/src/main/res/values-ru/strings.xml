@@ -20,6 +20,10 @@
     <!--FAVORITES-->
     <string name="favorite_history">История</string>
     <string name="favorite_favorites">Избранное</string>
+    <string name="delete_history">Удалить историю</string>
+    <string name="are_you_sure_to_delete_all_history">Вы уверены, что хотите удалить всю историю?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 
     <!--OTHERS-->
     <string name="in_development">В разработке…</string>

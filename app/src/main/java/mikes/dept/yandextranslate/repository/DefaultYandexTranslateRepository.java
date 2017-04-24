@@ -94,6 +94,16 @@ public class DefaultYandexTranslateRepository implements YandexTranslateReposito
                 .onErrorResumeNext(Observable::error);
     }
 
+    @Override
+    public Observable<Boolean> deleteHistory() {
+        return Observable.just(0)
+                .flatMap(integer -> {
+                    Realm.getDefaultInstance().executeTransaction(realm -> realm.delete(History.class));
+                    return Observable.just(true);
+                })
+                .onErrorResumeNext(Observable::error);
+    }
+
     private String getTranslateResultText(TranslateResponse translateResponse) {
         String translateResultText = "";
         for(String translate : translateResponse.getText()) {

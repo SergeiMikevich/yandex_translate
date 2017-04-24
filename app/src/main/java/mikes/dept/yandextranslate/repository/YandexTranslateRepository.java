@@ -22,4 +22,6 @@ public interface YandexTranslateRepository {
 
     Observable<Boolean> updateHistory(@NonNull History history);
 
+    Observable<Boolean> deleteHistory();
+
 }
